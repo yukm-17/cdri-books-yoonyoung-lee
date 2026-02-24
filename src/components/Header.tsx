@@ -1,5 +1,3 @@
-import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet'
-import { ChevronDown } from 'lucide-react'
 import { NavLink } from 'react-router'
 
 export const Header = () => {
@@ -10,25 +8,20 @@ export const Header = () => {
 					Certicos Books
 				</NavLink>
 
-				{/* PC 버전 메뉴 */}
-				<nav className="md:flex md:gap-6 hidden">
-					<NavLink to="search">도서 검색</NavLink>
-					<NavLink to="wishlist">내가 찜한 책</NavLink>
+				<nav className="flex gap-6">
+					<NavLink
+						to="search"
+						className={({ isActive }) => (isActive ? 'text-primary font-bold' : '')}
+					>
+						도서 검색
+					</NavLink>
+					<NavLink
+						to="wishlist"
+						className={({ isActive }) => (isActive ? 'text-primary font-bold' : '')}
+					>
+						내가 찜한 책
+					</NavLink>
 				</nav>
-
-				{/* 모바일 버전 드롭다운 메뉴 */}
-				<Sheet>
-					<SheetTrigger className="md:hidden">
-						<ChevronDown />
-					</SheetTrigger>
-
-					<SheetContent side="top">
-						<nav className="flex flex-col gap-6">
-							<NavLink to="search">도서 검색</NavLink>
-							<NavLink to="wishlist">내가 찜한 책</NavLink>
-						</nav>
-					</SheetContent>
-				</Sheet>
 			</div>
 		</header>
 	)
