@@ -46,7 +46,10 @@ const SearchPage = () => {
 			}),
 		select: ({ data }) => ({
 			meta: data.meta,
-			documents: data.documents,
+			documents: data.documents.map(item => ({
+				...item,
+				contents: item.contents.trim() ? item.contents : '-',
+			})),
 		}),
 		placeholderData: prev => prev,
 		enabled: !!state.keyword,

@@ -10,7 +10,7 @@ import { useShallow } from 'zustand/shallow'
 type ListItemProps = { data: Document }
 
 const ListItem = ({ data }: ListItemProps) => {
-	const { thumbnail, title, authors, sale_price, price, contents, url, isbn } = data
+	const { thumbnail, title, authors, sale_price, price, contents, url, isbn, translators } = data
 
 	const [open, setOpen] = useState<Boolean>(false)
 
@@ -39,18 +39,31 @@ const ListItem = ({ data }: ListItemProps) => {
 						<div className="flex gap-2 items-center">
 							<h4 className="w-96 text-lg font-bold break-keep leading-5">{title}</h4>
 
-							<p className="break-keep leading-5 text-zinc-500">{authors.join(', ')}</p>
+							<div className="flex-1">
+								<p className="break-keep leading-5 text-zinc-500">{authors.join(', ')}</p>
+
+								{translators.length > 0 && (
+									<p className="break-keep leading-5 text-zinc-500 text-sm">
+										번역 {translators.join(', ')}
+									</p>
+								)}
+							</div>
 						</div>
 
 						<ItemPrice price={price} salePrice={sale_price} size="sm" />
 					</div>
 
 					<div className="flex gap-2 items-center">
-						<Button asChild>
-							<a href={url} target="_blank">
-								구매하기
-							</a>
+						<Button asChild={!!url} disabled={!url}>
+							{url ? (
+								<a href={url} target="_blank">
+									구매하기
+								</a>
+							) : (
+								<span>구매 불가</span>
+							)}
 						</Button>
+
 						<Button variant="outline" onClick={() => setOpen(prev => !prev)}>
 							상세보기
 							<ChevronDown />
@@ -70,6 +83,12 @@ const ListItem = ({ data }: ListItemProps) => {
 							<h4 className="text-xl font-bold break-keep leading-5">{title}</h4>
 
 							<p className="text-zinc-500">{authors.join(', ')}</p>
+
+							{translators.length > 0 && (
+								<p className="break-keep leading-5 text-zinc-500 text-sm">
+									번역 {translators.join(', ')}
+								</p>
+							)}
 						</div>
 
 						<p className="font-bold">책 소개</p>
@@ -86,10 +105,14 @@ const ListItem = ({ data }: ListItemProps) => {
 						<div className="flex flex-col gap-4 w-full items-end">
 							<ItemPrice price={price} salePrice={sale_price} />
 
-							<Button size="lg" className="w-full" asChild>
-								<a href={url} target="_blank">
-									구매하기
-								</a>
+							<Button size="lg" className="w-full" asChild={!!url} disabled={!url}>
+								{url ? (
+									<a href={url} target="_blank">
+										구매하기
+									</a>
+								) : (
+									<span>구매 불가</span>
+								)}
 							</Button>
 						</div>
 					</div>

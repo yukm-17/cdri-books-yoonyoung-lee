@@ -1,6 +1,6 @@
 import axios from 'axios'
 
 export const apiInstance = axios.create({
-	baseURL: 'https://dapi.kakao.com/v3',
+	baseURL: import.meta.env.VITE_KAKAO_API_URL,
 	headers: { Authorization: `KakaoAK ${import.meta.env.VITE_KAKAO_API_KEY}` },
 })

@@ -26,7 +26,7 @@ const ItemThumbnail = ({ src, isWished = false, size = 'md', onClick }: ItemThum
 			{src ? (
 				<img src={src} className="w-full" />
 			) : (
-				<div className="flex flex-col justify-center items-center w-full h-28 border border-zinc-200 text-zinc-300">
+				<div className="flex flex-col justify-center items-center w-full h-20 border border-zinc-200 text-zinc-300">
 					<Info size={thumbnailIconSize} />
 				</div>
 			)}
