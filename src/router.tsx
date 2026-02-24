@@ -1,5 +1,6 @@
 import App from '@/App'
 import SearchPage from '@/pages/SearchPage'
+import WishListPage from '@/pages/WishListPage'
 import { createBrowserRouter, Navigate } from 'react-router'
 
 const router = createBrowserRouter([
@@ -17,7 +18,7 @@ const router = createBrowserRouter([
 			},
 			{
 				path: 'wishlist',
-				element: <div>wishlist</div>,
+				element: <WishListPage />,
 			},
 		],
 	},
