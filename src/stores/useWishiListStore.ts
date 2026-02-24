@@ -10,19 +10,33 @@ export const useWishiListStore = create(
 		subscribeWithSelector(
 			combine(initialState, set => ({
 				setWishList: (document: Document) =>
-					set(state => ({
-						wishList: {
-							meta: state.wishList.meta,
-							documents: [...state.wishList.documents, document],
-						},
-					})),
+					set(state => {
+						const documents = [...state.wishList.documents, document]
+
+						return {
+							wishList: {
+								meta: {
+									...state.wishList.meta,
+									total_count: documents.length,
+								},
+								documents,
+							},
+						}
+					}),
 				removeWishList: (isbn: string) =>
-					set(state => ({
-						wishList: {
-							meta: state.wishList.meta,
-							documents: state.wishList.documents.filter(item => item.isbn !== isbn),
-						},
-					})),
+					set(state => {
+						const documents = state.wishList.documents.filter(item => item.isbn !== isbn)
+
+						return {
+							wishList: {
+								meta: {
+									...state.wishList.meta,
+									total_count: documents.length,
+								},
+								documents,
+							},
+						}
+					}),
 			})),
 		),
 		{

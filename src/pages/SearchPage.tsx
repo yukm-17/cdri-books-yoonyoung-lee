@@ -1,6 +1,9 @@
 import { searchBook } from '@/api/api'
+import ContentsLayout from '@/components/ContentsLayout'
+import CountDescription from '@/components/CountDescription'
 import ListItem from '@/components/ListItem'
-import ListPagination from '@/components/ListPagination'
+import ListWrap from '@/components/ListWrap'
+import NoResults from '@/components/NoResults'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover'
@@ -14,7 +17,7 @@ import {
 } from '@/components/ui/select'
 import { DEFAULT_SEARCH_DATA, PAGE_SIZE } from '@/consistent/consistent'
 import { useQuery } from '@tanstack/react-query'
-import { BookOpen, Search } from 'lucide-react'
+import { Search } from 'lucide-react'
 import { useState } from 'react'
 
 const SearchPage = () => {
@@ -68,12 +71,10 @@ const SearchPage = () => {
 	}
 
 	return (
-		<div className="flex flex-col gap-6 h-full min-h-0">
-			<h3 className="shrink-0">도서 검색</h3>
-
+		<ContentsLayout title="도서 검색">
 			<div className="flex items-center gap-4 shrink-0">
-				<div className="flex flex-1 justify-between items-center border rounded-4xl">
-					<Search />
+				<div className="flex flex-1 justify-between items-center border rounded-4xl px-3">
+					<Search className="text-muted" />
 
 					<Input
 						type="text"
@@ -124,33 +125,23 @@ const SearchPage = () => {
 				</Popover>
 			</div>
 
-			<p className="shrink-0">
-				도서 검색 결과 총<span className="text-primary">{searchData.meta.total_count}</span>건
-			</p>
+			<CountDescription title="도서 검색 결과" count={searchData.meta.total_count} />
 
 			{!searchData.documents.length ? (
-				<div className="flex flex-col flex-1 gap-4 justify-center items-center min-h-0">
-					<BookOpen size="60" />
-
-					<p>검색된 결과가 없습니다.</p>
-				</div>
+				<NoResults>검색된 결과가 없습니다.</NoResults>
 			) : (
-				<div className="flex flex-col gap-6 flex-1 min-h-0">
-					<div className="flex flex-col flex-1 overflow-y-auto">
-						{searchData.documents.map(item => (
-							<ListItem data={item} />
-						))}
-					</div>
-
-					<ListPagination
-						totalCount={searchData.meta.total_count}
-						isEnd={searchData.meta.is_end}
-						page={page}
-						setPage={setPage}
-					/>
-				</div>
+				<ListWrap
+					totalCount={searchData.meta.total_count}
+					isEnd={searchData.meta.is_end}
+					page={page}
+					setPage={setPage}
+				>
+					{searchData.documents.map(item => (
+						<ListItem key={item.isbn} data={item} />
+					))}
+				</ListWrap>
 			)}
-		</div>
+		</ContentsLayout>
 	)
 }
 

@@ -13,9 +13,8 @@
 	line-height: 1.5;
 	font-weight: 400;
 
+	color: oklch(0.355 0.0246 262.79);
 	color-scheme: light dark;
-	color: rgba(255, 255, 255, 0.87);
-	background-color: #242424;
 
 	font-synthesis: none;
 	text-rendering: optimizeLegibility;
@@ -28,11 +27,11 @@
 	--card-foreground: oklch(0.145 0 0);
 	--popover: oklch(1 0 0);
 	--popover-foreground: oklch(0.145 0 0);
-	--primary: oklch(0.205 0 0);
+	--primary: oklch(0.6184 0.1761 262.23);
 	--primary-foreground: oklch(0.985 0 0);
-	--secondary: oklch(0.97 0 0);
+	--secondary: oklch(0.5602 0.0223 260.15);
 	--secondary-foreground: oklch(0.205 0 0);
-	--muted: oklch(0.97 0 0);
+	--muted: oklch(0.6647 0.0195 261.32);
 	--muted-foreground: oklch(0.556 0 0);
 	--accent: oklch(0.97 0 0);
 	--accent-foreground: oklch(0.205 0 0);
@@ -53,6 +52,9 @@
 	--sidebar-accent-foreground: oklch(0.205 0 0);
 	--sidebar-border: oklch(0.922 0 0);
 	--sidebar-ring: oklch(0.708 0 0);
+	--black: oklch(0.252 0 0);
+	--gray: oklch(0.8884 0 0);
+	--light-gray: oklch(0.9662 0.0034 247.86);
 }
 
 @theme inline {
@@ -138,7 +140,7 @@
 		@apply m-0 p-0 w-full h-full;
 	}
 	body {
-		@apply m-0 p-0 w-full h-full bg-background text-foreground;
+		@apply m-0 p-0 w-full h-full;
 	}
 	button {
 		@apply cursor-pointer;
