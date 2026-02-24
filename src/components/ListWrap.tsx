@@ -7,7 +7,7 @@ import {
 	PaginationNext,
 	PaginationPrevious,
 } from '@/components/ui/pagination'
-import { PAGE_SIZE } from '@/consistent/consistent'
+import { PAGE_SIZE } from '@/constants/constants'
 import { type Dispatch, type ReactNode } from 'react'
 
 interface ListWrapProps {

@@ -1,4 +1,4 @@
-import { DEFAULT_SEARCH_DATA } from '@/consistent/consistent'
+import { DEFAULT_SEARCH_DATA } from '@/constants/constants'
 import type { Document } from '@/types/types'
 import { create } from 'zustand'
 import { combine, persist, subscribeWithSelector } from 'zustand/middleware'

@@ -15,7 +15,7 @@ import {
 	SelectTrigger,
 	SelectValue,
 } from '@/components/ui/select'
-import { DEFAULT_SEARCH_DATA, PAGE_SIZE } from '@/consistent/consistent'
+import { DEFAULT_SEARCH_DATA, PAGE_SIZE } from '@/constants/constants'
 import { useQuery } from '@tanstack/react-query'
 import { Search } from 'lucide-react'
 import { useState } from 'react'

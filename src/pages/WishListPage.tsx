@@ -3,7 +3,7 @@ import CountDescription from '@/components/CountDescription'
 import ListItem from '@/components/ListItem'
 import ListWrap from '@/components/ListWrap'
 import NoResults from '@/components/NoResults'
-import { PAGE_SIZE } from '@/consistent/consistent'
+import { PAGE_SIZE } from '@/constants/constants'
 import { useWishiListStore } from '@/stores/useWishiListStore'
 import { useMemo, useState } from 'react'
 
