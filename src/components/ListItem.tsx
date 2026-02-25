@@ -40,7 +40,9 @@ const ListItem = ({ data }: ListItemProps) => {
 							<h4 className="w-96 text-lg font-bold break-keep leading-5">{title}</h4>
 
 							<div className="flex-1">
-								<p className="break-keep leading-5 text-zinc-500">{authors.join(', ')}</p>
+								<p className="break-keep leading-5 text-zinc-500">
+									{authors.length ? authors.join(', ') : '-'}
+								</p>
 
 								{translators.length > 0 && (
 									<p className="break-keep leading-5 text-zinc-500 text-sm">
@@ -82,7 +84,7 @@ const ListItem = ({ data }: ListItemProps) => {
 						<div className="flex flex-col gap-1">
 							<h4 className="text-xl font-bold break-keep leading-5">{title}</h4>
 
-							<p className="text-zinc-500">{authors.join(', ')}</p>
+							<p className="text-zinc-500">{authors.length ? authors.join(', ') : '-'}</p>
 
 							{translators.length > 0 && (
 								<p className="break-keep leading-5 text-zinc-500 text-sm">
