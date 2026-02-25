@@ -20,9 +20,14 @@ import { useQuery } from '@tanstack/react-query'
 import { Search } from 'lucide-react'
 import { useState } from 'react'
 
+interface SearchState {
+	mode: 'global' | 'detail'
+	keyword: string
+}
+
 const SearchPage = () => {
-	// 검색 상태 플래그
-	const [state, setState] = useState<{ mode: 'global' | 'detail'; keyword: string }>({
+	// 검색 상태
+	const [state, setState] = useState<SearchState>({
 		mode: 'global',
 		keyword: '',
 	})
