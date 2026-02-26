@@ -67,6 +67,7 @@ const SearchPage = () => {
 		})
 		setDetailInput('')
 		setTarget('title')
+		setPage(1)
 	}
 
 	const handleDetailInput = () => {
@@ -75,6 +76,7 @@ const SearchPage = () => {
 			keyword: detailInput.trim(),
 		})
 		setGlobalInput('')
+		setPage(1)
 		refetch()
 	}
 

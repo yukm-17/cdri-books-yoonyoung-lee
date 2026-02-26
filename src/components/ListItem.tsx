@@ -4,7 +4,7 @@ import { Button } from '@/components/ui/button'
 import { useWishiListStore } from '@/stores/useWishiListStore'
 import type { Document } from '@/types/types'
 import { ChevronDown, ChevronUp } from 'lucide-react'
-import { useState } from 'react'
+import { memo, useState } from 'react'
 import { useShallow } from 'zustand/shallow'
 
 type ListItemProps = { data: Document }
@@ -12,7 +12,7 @@ type ListItemProps = { data: Document }
 const ListItem = ({ data }: ListItemProps) => {
 	const { thumbnail, title, authors, sale_price, price, contents, url, isbn, translators } = data
 
-	const [open, setOpen] = useState<Boolean>(false)
+	const [open, setOpen] = useState<boolean>(false)
 
 	const { wishList, setWishList, removeWishList } = useWishiListStore(
 		useShallow(state => ({
@@ -124,4 +124,4 @@ const ListItem = ({ data }: ListItemProps) => {
 	)
 }
 
-export default ListItem
+export default memo(ListItem)
